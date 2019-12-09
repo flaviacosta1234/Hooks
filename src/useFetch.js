@@ -16,12 +16,11 @@ export const useFetch = url => {
     fetch(url)
       .then(x => x.text())
       .then(y => {
-        setTimeout(() => {
-          if (isCurrent.current) {
-            setState({ data: y, loading: false });
-          }
-        }, 2000);
+        if (isCurrent.current) {
+          setState({ data: y, loading: false });
+        }
       });
   }, [url, setState]);
+
   return state;
 };
